@@ -1,0 +1,16 @@
+	ld	g0,#0
+	ld	g2,#5
+	ld	g1,#a
+loop
+	st	g1,addr
+	dc	30h
+addr	ds	1
+	add	g1,#1
+	sub	g2,#1
+	jnz	loop
+	st	g0,l
+	halt
+
+a	dc	2,1,5,9,3
+l	ds	1
+

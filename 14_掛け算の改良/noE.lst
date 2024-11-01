@@ -1,0 +1,19 @@
+ADR  CODE          Label   Instruction             Comment              Page(1)
+
+00  10 11          START   LD      G0,ZERO        
+02  14 13                  LD      G1,M           
+04                 
+04  44 11          LOOP    SUB     G1,ZERO        
+06  A4 0E                  JZ      EXIT           
+08  30 14                  ADD     G0,N           
+0A  44 12                  SUB     G1,ONE         
+0C  A0 04                  JMP     LOOP           
+0E                 
+0E  20 15          EXIT    ST      G0,L           
+10  FF                     HALT                   
+11                 
+11  00             ZERO    DC      0              
+12  01             ONE     DC      1              
+13  0A             M       DC      10             
+14  05             N       DC      5              
+15  00             L       DS      1              

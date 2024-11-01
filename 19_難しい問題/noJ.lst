@@ -1,0 +1,19 @@
+ADR  CODE          Label   Instruction             Comment              Page(1)
+
+00  13 00                  LD      G0,#0          
+02  1B 05                  LD      G2,#5          
+04  17 13                  LD      G1,#A          
+06                 LOOP
+06  24 09                  ST      G1,ADDR        
+08  30                     DC      30H            
+09  00             ADDR    DS      1              
+0A  37 01                  ADD     G1,#1          
+0C  4B 01                  SUB     G2,#1          
+0E  B4 06                  JNZ     LOOP           
+10  20 18                  ST      G0,L           
+12  FF                     HALT                   
+13                 
+13  02 01 05 09    A       DC      2,1,5,9,3      
+17  03 
+18  00             L       DS      1              
+19                 

@@ -1,0 +1,18 @@
+	ld	g0,#0
+	ld	g1,#0
+loop	cmp	g1,#5
+	jz	end
+	ld	g2,a,g1
+	and	g2,#01h
+	xor	g2,#01h
+	st	g2,t
+	add	g0,t
+even	add	g1,#1
+	jmp	loop
+end	st	g0,l
+	halt
+
+a	dc	1,2,3,4,5
+l	ds	1
+t	ds	1
+

@@ -1,0 +1,18 @@
+ADR  CODE          Label   Instruction             Comment              Page(1)
+
+00  10 11          START   LD      G0,A           
+02  50 12                  CMP     G0,B           
+04  B8 08                  JNC     L1             
+06  10 12                  LD      G0,B           
+08                 L1
+08  50 13                  CMP     G0,C           
+0A  B8 0E                  JNC     L2             
+0C  10 13                  LD      G0,C           
+0E                 L2
+0E  20 14                  ST      G0,M           
+10  FF                     HALT                   
+11                 
+11  01             A       DC      1              
+12  02             B       DC      2              
+13  03             C       DC      3              
+14  00             M       DS      1              

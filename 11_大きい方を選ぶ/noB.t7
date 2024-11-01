@@ -1,0 +1,12 @@
+START   LD      G0,N
+        SUB     G0,M
+        JM      L1
+        LD      G0,N
+        JMP     L2
+L1      LD      G0,M
+L2      ST      G0,L
+        HALT
+
+N       DC      10
+M       DC      20
+L       DS      1
