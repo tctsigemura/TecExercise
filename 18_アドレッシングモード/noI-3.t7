@@ -1,0 +1,16 @@
+	ld	g0,#0
+	ld	g1,#0
+loop	cmp	g1,#5
+	jz	end
+	ld	g2,a,g1
+	shrl	g2
+	jnc	even
+	add	g0,#1
+even	add	g1,#1
+	jmp	loop
+end	st	g0,l
+	halt
+
+a	dc	2,1,5,9,3
+l	ds	1
+
