@@ -1,0 +1,20 @@
+ADR  CODE          Label   Instruction             Comment              Page(1)
+
+02                 SIOD    EQU     02H            
+03                 SIOS    EQU     03H            
+00  17 00          START   LD      G1,#0          
+02  1B 09                  LD      G2,#9          
+04  C0 03          LOOP    IN      G0,SIOS        
+06  63 80                  AND     G0,#80H        
+08  A4 04                  JZ      LOOP           
+0A  11 15                  LD      G0,DATA,G1     
+0C  C3 02                  OUT     G0,SIOD        
+0E  37 01                  ADD     G1,#1          
+10  4B 01                  SUB     G2,#1          
+12  B4 04                  JNZ     LOOP           
+14  FF                     HALT                   
+15                 
+15  53 48 49 47    DATA    DC      "SHIGEMURA"    
+19  45 4D 55 52 
+1D  41 
+1E                 

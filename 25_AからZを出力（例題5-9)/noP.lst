@@ -1,0 +1,15 @@
+ADR  CODE          Label   Instruction             Comment              Page(1)
+
+02                 SIOD    EQU     02H            
+03                 SIOS    EQU     03H            
+00  13 41                  LD      G0,#'A'        
+02  C4 03          WAIT    IN      G1,SIOS        
+04  67 80                  AND     G1,#80H        
+06  A4 02                  JZ      WAIT           
+08  C3 02                  OUT     G0,SIOD        
+0A  53 5A                  CMP     G0,#'Z'        
+0C  A4 12                  JZ      OWARI          
+0E  33 01                  ADD     G0,#1          
+10  A0 02                  JMP     WAIT           
+12  FF             OWARI   HALT                   
+13                 
