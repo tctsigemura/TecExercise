@@ -1,0 +1,18 @@
+siod	equ	02h
+sios	equ	03h
+
+start	in	g1,sios
+	and	g1,#40h	; Rビットのテスト
+	jz	start
+	in	g0,siod	; 受信データ
+	cmp	g0,#'a'
+	jc	output
+	cmp	g0,#'z'+1
+	jnc	output
+	sub	g0,#20h	; 小文字→大文字
+output	in	g1,sios
+	and	g1,#80h ; Tビットのテスト
+	jz	output
+	out	g0,siod
+	jmp	start
+

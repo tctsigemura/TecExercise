@@ -1,0 +1,41 @@
+ADR  CODE          Label   Instruction             Comment              Page(1)
+
+02                 SIOD    EQU     02H            
+03                 SIOS    EQU     03H            
+00                 
+00                 ; 1文字入力
+00  C4 03          L1      IN      G1,SIOS        
+02  67 40                  AND     G1,#40H        
+04  A4 00                  JZ      L1             
+06  C8 02                  IN      G2,SIOD        
+08  28 2E                  ST      G2,CHAR        
+0A                 ; 16進文字2桁に変換
+0A  6B 0F                  AND     G2,#0FH        
+0C  12 31                  LD      G0,HSTR,G2     
+0E  20 30                  ST      G0,HEX+1       
+10  18 2E                  LD      G2,CHAR        
+12  9B                     SHRL    G2             
+13  9B                     SHRL    G2             
+14  9B                     SHRL    G2             
+15  9B                     SHRL    G2             
+16  12 31                  LD      G0,HSTR,G2     
+18  20 2F                  ST      G0,HEX         
+1A                 ; 出力
+1A  1B 00                  LD      G2,#0          
+1C  12 2F          L2      LD      G0,HEX,G2      
+1E  C4 03          L3      IN      G1,SIOS        
+20  67 80                  AND     G1,#80H        
+22  A4 1E                  JZ      L3             
+24  C3 02                  OUT     G0,SIOD        
+26  3B 01                  ADD     G2,#1          
+28  5B 02                  CMP     G2,#2          
+2A  B4 1C                  JNZ     L2             
+2C  A0 00                  JMP     L1             
+2E                 
+2E  00             CHAR    DS      1              
+2F  00 00          HEX     DS      2              
+31  30 31 32 33    HSTR    DC      "0123456789ABCDEF" 
+35  34 35 36 37 
+39  38 39 41 42 
+3D  43 44 45 46 
+41                 
