@@ -1,0 +1,18 @@
+ADR  CODE          Label   Instruction             Comment              Page(1)
+
+02                 SIOD    EQU     02H            
+03                 SIOS    EQU     03H            
+00                 
+00  C4 03          L1      IN      G1,SIOS        
+02  67 40                  AND     G1,#40H        
+04  A4 00                  JZ      L1             
+06  C0 02                  IN      G0,SIOD        
+08  33 03                  ADD     G0,#3          
+0A  53 7B                  CMP     G0,#'z'+1      
+0C  A8 10                  JC      L2             
+0E  43 1A                  SUB     G0,#26         
+10  C4 03          L2      IN      G1,SIOS        
+12  67 80                  AND     G1,#80H        
+14  A4 10                  JZ      L2             
+16  C3 02                  OUT     G0,SIOD        
+18  A0 00                  JMP     L1             
